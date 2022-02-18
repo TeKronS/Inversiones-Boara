@@ -10,6 +10,16 @@
 
 # production
 /build
+/.firebaserc
+/database.rules.json
+/firebase.json
+/firestore.indexes.json
+/firestore.rules
+/index.html
+/README.md
+/storage.rules
+/.firebase
+/.github
 
 # misc
 .DS_Store
