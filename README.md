@@ -1,3 +1,11 @@
+# Pagina de informacion de productos con integracion a Whatsapp y Facebook.
+
+## Este es mi segundo Proyecto Terminado.
+
+## Con esta pagina El Cliente puede agregar contenido por medio de la base de datos y agregar botones en la seccion de arreglos segun su necesidad.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
