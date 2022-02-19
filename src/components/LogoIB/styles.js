@@ -12,11 +12,13 @@ export const LogoContainer = styled.div`
   height: 1px;
 
   .logoContainerFullScreen {
-    position: absolute;
+    position: fixed;
     width: 1px;
     height: 1px;
     width: 100vw;
     height: 100vh;
+    bottom:0;
+    right:0;
     transform: scale(1);
     background: ${color.azul};
   }
@@ -43,7 +45,7 @@ export const LogoContainer = styled.div`
 
 export const ResizeBox = styled.div`
   display: flex;
-  position: relative;
+  position: fixed;
   transform-origin: left top;
   transition: 700ms ease-in-out 0s;
   top: 1;

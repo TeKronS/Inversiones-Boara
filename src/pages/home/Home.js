@@ -45,27 +45,27 @@ export const Home = ({ initialData, totalData }) => {
     }
   }
 
-  function addComplement(response) {
+   function addComplement(response) {
     let additionalText = "";
-    let totalPrice = parseInt(dataCard.price, 10);
+    let totalPrice = parseFloat(dataCard.price);
     if (response) {
       setDataCard(false);
       setComplement(false);
       if (response === true) {
         return;
       }
-      async function peticion() {
+      async function petition() {
         await Object.entries(response).forEach((item) => {
           const [key, value] = item;
           additionalText = additionalText + `${value["cantidad"]} ${key},`;
           const total =
-            parseInt(value["precio"], 10) * parseInt(value["cantidad"], 10);
+            parseFloat(value["precio"]) * parseInt(value["cantidad"], 10);
           totalPrice = totalPrice + total;
         });
         const text = `${message} tambien me gustaria añadir ${additionalText} que seria en Total (${totalPrice} Dólares). ¿tiene disponibilidad?`;
         redirect(text);
       }
-      peticion();
+      petition();
     } else {
       setDataCard(false);
       setComplement(false);

@@ -1,7 +1,9 @@
 import { Body, Paragraph, Title, ContactUS, SpanBold } from "./styles";
-import { Like, Comments, Page } from "react-facebook";
+import { Like, Comments, Page, FacebookProvider } from "react-facebook";
+
 
 export const AboutUs = () => {
+
   return (
     <Body>
       <Title>Sobre Inversiones Boara</Title>
@@ -39,13 +41,13 @@ export const AboutUs = () => {
           <SpanBold>Ubicados en San Carlos, Estado Cojedes.</SpanBold>
         </ContactUS>
       </section>
-
+     
+      <FacebookProvider appId="808299077227731">
       <section>
         <Title>
           <Page href="https://www.facebook.com/Inversiones-Boara-101083822497326" />
         </Title>
         <br />
-
         <Comments
           href="https://www.facebook.com/Inversiones-Boara-101083822497326"
           width="100%"
@@ -54,6 +56,7 @@ export const AboutUs = () => {
         <br />
         <Like colorScheme="dark" showFaces share />
       </section>
+      </FacebookProvider >
     </Body>
   );
 };

@@ -73,7 +73,7 @@ export const Arreglos = ({ data }) => {
   }
   function addComplement(response) {
     let additionalText = "";
-    let totalPrice = parseInt(dataCard.price, 10);
+    let totalPrice = parseFloat(dataCard.price);
     if (response) {
       setDataCard(false);
       setComplement(false);
@@ -85,7 +85,7 @@ export const Arreglos = ({ data }) => {
           const [key, value] = item;
           additionalText = additionalText + `${value["cantidad"]} ${key},`;
           const total =
-            parseInt(value["precio"], 10) * parseInt(value["cantidad"], 10);
+            parseFloat(value["precio"]) * parseInt(value["cantidad"], 10);
           totalPrice = totalPrice + total;
         });
         const text = `${message} tambien me gustaria añadir ${additionalText} que seria en Total (${totalPrice} Dólares). ¿tiene disponibilidad?`;

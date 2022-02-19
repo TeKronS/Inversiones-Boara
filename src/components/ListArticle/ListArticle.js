@@ -49,11 +49,11 @@ export const ListArticle = ({ articles, setList, price }) => {
   }
 
   function getTotalPrice() {
-    let totalPrice = parseInt(price, 10);
+    let totalPrice = parseFloat(price, 10);
     if (Object.keys(order.current).length !== 0) {
       Object.values(order.current).forEach((item) => {
         totalPrice =
-          totalPrice + parseInt(item.precio, 10) * parseInt(item.cantidad, 10);
+          totalPrice + parseFloat(item.precio, 10) * parseInt(item.cantidad, 10);
       });
       return totalPrice;
     }

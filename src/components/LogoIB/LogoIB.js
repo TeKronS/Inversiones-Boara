@@ -19,9 +19,15 @@ export const LogoIB = () => {
       refBoxLogo.current.classList.remove("BoxLogoCenter");
     }, 700);
   }
+
+  function elementPositionchanged(){
+    LogoResizeBox.current.style.position = "relative";
+  }
+
   return (
     <LogoContainer>
       <ResizeBox
+        onTransitionEnd={elementPositionchanged}
         ref={LogoResizeBox}
         className={"logoContainer logoContainerFullScreen"}
       >

@@ -7,14 +7,19 @@ import { AboutUs } from "./../pages/about/AboutUs";
 import { Reseñas } from "./../pages/reseñas/Reseñas";
 import { Error } from "./../pages/error/Error";
 import { getInitialData, getTotalData } from "./../firebase/FirebaseConfig";
-import { FacebookProvider } from "react-facebook";
+import { useLocation } from 'react-router-dom';
 
 export const MainSection = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [InitialDataPage, setInitialDataPage] = useState(null);
   const [DataPage, setDataPage] = useState(null);
 
   useEffect(() => {
+    if(location.pathname === "/error"){
+      navigate("/");
+    };
+
     async function getTotalDataPage() {
       let triedInitialData = 0;
       let triedTotalData = 0;
@@ -59,7 +64,6 @@ export const MainSection = () => {
 
   return (
     <Main>
-      <FacebookProvider appId="808299077227731">
         <Routes>
           <Route
             path="/"
@@ -79,7 +83,6 @@ export const MainSection = () => {
             }
           />
         </Routes>
-      </FacebookProvider>
     </Main>
   );
 };
