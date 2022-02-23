@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { register } from './serviceWorkerRegistration';
+
 
 import { App } from "./App";
 
@@ -11,3 +13,6 @@ ReactDOM.render(
   </BrowserRouter>,
   rootElement
 );
+
+
+register();
