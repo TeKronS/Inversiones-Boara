@@ -7,6 +7,7 @@ export const OrderBox = styled.section`
   justify-content: flex-end;
   color: white;
   font-size: 16px;
+  white-space: nowrap;
   button {
     margin-right: 1px;
   }
@@ -19,6 +20,7 @@ export const OrderBox = styled.section`
     font-size: 13px;
     display: inline-block;
     pointer-events: none;
-    width: 11px;
+    width: 10px;
+    margin-left: 2px;
   }
 `;
