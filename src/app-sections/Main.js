@@ -7,8 +7,11 @@ import { AboutUs } from "./../pages/about/AboutUs";
 import { Reseñas } from "./../pages/reseñas/Reseñas";
 import { Error } from "./../pages/error/Error";
 import { getInitialData, getTotalData } from "./../firebase/FirebaseConfig";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const MainSection = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [recommended, setRecommended] = useState(
     localStorage.getItem("Recomendados") !== undefined &&
       localStorage.getItem("Recomendados")
@@ -34,8 +37,18 @@ export const MainSection = () => {
       ? JSON.parse(localStorage.getItem("Reseñas"))
       : null
   );
-
+  console.log("load");
   useEffect(() => {
+    if (
+      location.pathname === "/about" ||
+      location.pathname === "/arreglos" ||
+      location.pathname === "/resenas"
+    ) {
+      navigate(location.pathname, { replace: false });
+    } else {
+      navigate("/", { replace: false });
+    }
+
     function getRecommended() {
       getInitialData()
         .then(setRecommended)

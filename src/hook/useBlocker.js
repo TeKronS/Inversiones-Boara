@@ -15,7 +15,7 @@ import { UNSAFE_NavigationContext as NavigationContext } from "react-router-dom"
  */
 export function useBlocker(blocker, when = true) {
   const { navigator } = useContext(NavigationContext);
-  console.log("atras");
+
   useEffect(() => {
     if (!when) return;
 
