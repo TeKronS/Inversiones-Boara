@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BodyArticles, Body, Article } from "./styles";
+import { BodyArticles, Body } from "./styles";
 import { timeAgo } from "./../../components/TimeAgo/TimeAgo";
 import { OrderBox } from "./../../components/OrderBar/styles";
 import { History } from "./History";

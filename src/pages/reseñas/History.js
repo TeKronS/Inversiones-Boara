@@ -9,12 +9,6 @@ export const History = ({ history, dateTime, timeago, image }) => {
     isImgSpan ? setImgSpand(false) : setImgSpand(true);
   }
 
-  function spanImg(e) {
-    if (e.target.width >= e.target.height) {
-      e.target.parentNode.parentNode.style.gridColumn = "span 2";
-    }
-  }
-
   return (
     <Article>
       {isImgSpan && <ImgSpand setState={imageState} image={image} />}
@@ -22,7 +16,7 @@ export const History = ({ history, dateTime, timeago, image }) => {
       <p>{history}</p>
       <Flexdiv />
       <ImgBox>
-        <img onClick={imageState} onLoad={spanImg} alt="" src={image} />
+        <img onClick={imageState} alt="" src={image} />
       </ImgBox>
     </Article>
   );

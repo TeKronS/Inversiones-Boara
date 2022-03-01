@@ -4,7 +4,7 @@ const color = {
   azul: "#021323",
   amarillo1: "#FFCD00",
   amarillo2: "#ebb441",
-  gris: "#8B8B8B"
+  gris: "#8B8B8B",
 };
 export const Body = styled.section`
   display: grid;
@@ -27,14 +27,13 @@ export const BodyArticles = styled.section`
   gap: 10px;
   grid-template-rows: auto 1fr;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1600px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1200px) {
     grid-template-columns: 1fr 1fr;
   }
-
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 750px) {
     grid-template-columns: 1fr;
   }
 `;

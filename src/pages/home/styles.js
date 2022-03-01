@@ -4,7 +4,7 @@ const color = {
   azul: "#021323",
   amarillo1: "#FFCD00",
   amarillo2: "#ebb441",
-  gris: "#8B8B8B"
+  gris: "#8B8B8B",
 };
 
 export const Body = styled.section`
@@ -33,8 +33,11 @@ export const Title = styled.h1`
   border-top-left-radius: 31px;
   span {
     color: ${color.azul};
-    line-height: 22px;
+    line-height: 25px;
     margin: 5px 5px 5px 10px;
+    @media screen and (max-width: 285px) {
+      font-size: 20px;
+    }
   }
 `;
 
