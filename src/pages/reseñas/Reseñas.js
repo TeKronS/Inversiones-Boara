@@ -5,25 +5,22 @@ import { OrderBox } from "./../../components/OrderBar/styles";
 import { History } from "./History";
 import { useNavigate } from "react-router-dom";
 
-export const Reseñas = ({ data }) => {
+export const Reseñas = ({ reviews }) => {
   const navigate = useNavigate();
 
-  if (data === false) {
+  if (reviews === false) {
     navigate("/error");
   }
 
-  const [order, setOrder] = useState(true);
-  const [reviews, setReviews] = useState(null);
-
   useEffect(() => {
-    if (data) {
-      if (data.reseñas.length) {
-        setReviews(data.reseñas);
-      } else {
+    if (reviews) {
+      if (!reviews.length) {
         navigate("/error");
       }
     }
-  }, [data]);
+  }, [reviews]);
+
+  const [order, setOrder] = useState(true);
 
   const articles =
     reviews &&
@@ -66,7 +63,7 @@ export const Reseñas = ({ data }) => {
         </button>
       </OrderBox>
       <BodyArticles>
-        {articles ? (
+        {articles &&
           articles.map((doc) => {
             const timestamp = doc.fecha.seconds * 1000;
             const { dateTime, timeago } = timeAgo(timestamp);
@@ -80,17 +77,7 @@ export const Reseñas = ({ data }) => {
                 image={doc.imagen}
               />
             );
-          })
-        ) : (
-          <>
-            <Article />
-            <Article />
-            <Article />
-            <Article />
-            <Article />
-            <Article />
-          </>
-        )}
+          })}
       </BodyArticles>
     </Body>
   );

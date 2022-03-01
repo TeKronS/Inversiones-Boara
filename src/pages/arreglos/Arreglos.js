@@ -7,27 +7,19 @@ import { AlertBox } from "./../../components/AlertBox/AlertBox";
 import { OrderBar } from "./../../components/OrderBar/OrderBar";
 import { useNavigate } from "react-router-dom";
 
-export const Arreglos = ({ data }) => {
+export const Arreglos = ({ arrangaments, accessories }) => {
   const navigate = useNavigate();
-  if (data === false) {
+  if (arrangaments === false) {
     navigate("/error");
   }
 
-  const [arrangements, setArrangements] = useState(null);
-  const [accessories, setAccessories] = useState(null);
-
   useEffect(() => {
-    if (data) {
-      if (Object.keys(data.arreglos).length === 0) {
+    if (arrangaments) {
+      if (Object.keys(arrangaments).length === 0) {
         navigate("/error");
-      } else {
-        if (Object.keys(data.complementos).length > 0) {
-          setAccessories(data.complementos);
-        }
-        setArrangements(data.arreglos);
       }
     }
-  }, [data]);
+  }, [arrangaments]);
 
   const refCategoryElement = useRef(null);
   const refWhatsappLink = useRef(null);
@@ -39,7 +31,8 @@ export const Arreglos = ({ data }) => {
   const [priceOrder, setPriceOrden] = useState(null);
 
   const currentArrangements =
-    arrangements && Object.entries(arrangements[currentCategory]);
+    arrangaments && Object.entries(arrangaments[currentCategory]);
+
   const message = `Hola me interesa el arreglo ${dataCard.title} que tiene el precio de ${dataCard.price} Dólares,`;
 
   function onChangedCategory(e) {
@@ -130,8 +123,8 @@ export const Arreglos = ({ data }) => {
       <BodyCategory>
         <nav ref={refCategoryElement}>
           <ul>
-            {arrangements &&
-              Object.keys(arrangements).map((doc, key) => {
+            {arrangaments &&
+              Object.keys(arrangaments).map((doc, key) => {
                 return (
                   <li id={doc} onClick={onChangedCategory} key={key}>
                     <span id={doc}> {doc}</span>
@@ -149,7 +142,7 @@ export const Arreglos = ({ data }) => {
         setPriceOrden={setPriceOrden}
       />
       <BodyCards key={currentCategory}>
-        {articles ? (
+        {articles && (
           <>
             {articles.map((item) => {
               return (
@@ -161,15 +154,6 @@ export const Arreglos = ({ data }) => {
                 />
               );
             })}
-          </>
-        ) : (
-          <>
-            <GridCard />
-            <GridCard />
-            <GridCard />
-            <GridCard />
-            <GridCard />
-            <GridCard />
           </>
         )}
       </BodyCards>

@@ -6,7 +6,7 @@ import {
   IBF,
   IB,
   IBText,
-  IBTextContainer
+  IBTextContainer,
 } from "./styles";
 
 export const LogoIB = () => {
@@ -20,7 +20,7 @@ export const LogoIB = () => {
     }, 700);
   }
 
-  function elementPositionchanged(){
+  function elementPositionchanged() {
     LogoResizeBox.current.style.position = "relative";
   }
 

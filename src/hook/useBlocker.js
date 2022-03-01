@@ -15,13 +15,11 @@ import { UNSAFE_NavigationContext as NavigationContext } from "react-router-dom"
  */
 export function useBlocker(blocker, when = true) {
   const { navigator } = useContext(NavigationContext);
-
+  console.log("atras");
   useEffect(() => {
     if (!when) return;
 
-    const unblock = navigator.block(() => {
-      blocker();
-    });
+    const unblock = navigator.block(blocker);
 
     return unblock;
   }, [navigator, blocker, when]);

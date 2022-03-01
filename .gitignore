@@ -20,7 +20,7 @@ build
 /storage.rules
 /.firebase
 /.github
-
+/.vscode
 # misc
 .DS_Store
 .env.local

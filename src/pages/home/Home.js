@@ -1,12 +1,27 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Body, Title, CustomLink } from "./styles";
 import { ListArticle } from "./../../components/ListArticle/ListArticle";
 import { AlertBox } from "./../../components/AlertBox/AlertBox";
 import { GridCard } from "./../../components/Cards/GridCard";
 import { BodyCards } from "./../../components/Cards/styles";
 import { OrderBar } from "./../../components/OrderBar/OrderBar";
+import { useNavigate } from "react-router-dom";
 
-export const Home = ({ initialData, totalData }) => {
+export const Home = ({ recommended, accessories }) => {
+  const navigate = useNavigate();
+
+  if (recommended === false) {
+    navigate("/error");
+  }
+
+  useEffect(() => {
+    if (recommended) {
+      if (Object.keys(recommended).length === 0) {
+        navigate("/error");
+      }
+    }
+  }, [recommended]);
+
   const refWhatsappLink = useRef(null);
   const refBody = useRef(null);
 
@@ -15,16 +30,15 @@ export const Home = ({ initialData, totalData }) => {
   const [nameOrder, setNameOrden] = useState(null);
   const [priceOrder, setPriceOrden] = useState(null);
 
-  const accessories = totalData ? totalData.complementos : null;
   const message = `Hola me interesa el arreglo ${dataCard.title} que tiene el precio de ${dataCard.price} Dólares,`;
-  const copyData = initialData && initialData.slice();
+  const copyData = recommended && recommended.slice();
 
   function solicitarPerdido(title, price) {
-    if (!accessories) {
-      closeAlert(false);
+    if (accessories && Object.keys(accessories).length > 0) {
+      setDataCard({ title, price });
       return;
     }
-    setDataCard({ title, price });
+    closeAlert(false);
   }
 
   function redirect(text) {
@@ -45,7 +59,7 @@ export const Home = ({ initialData, totalData }) => {
     }
   }
 
-   function addComplement(response) {
+  function addComplement(response) {
     let additionalText = "";
     let totalPrice = parseFloat(dataCard.price);
     if (response) {
@@ -120,7 +134,7 @@ export const Home = ({ initialData, totalData }) => {
         setPriceOrden={setPriceOrden}
       />
       <BodyCards>
-        {articles ? (
+        {articles && (
           <>
             {articles.map((item) => {
               return (
@@ -132,15 +146,6 @@ export const Home = ({ initialData, totalData }) => {
                 />
               );
             })}
-          </>
-        ) : (
-          <>
-            <GridCard />
-            <GridCard />
-            <GridCard />
-            <GridCard />
-            <GridCard />
-            <GridCard />
           </>
         )}
       </BodyCards>
