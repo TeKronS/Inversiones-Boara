@@ -4,7 +4,7 @@ const color = {
   azul: "#021323",
   amarillo1: "#FFCD00",
   amarillo2: "#ebb441",
-  gris: "#8B8B8B"
+  gris: "#8B8B8B",
 };
 
 export const LogoContainer = styled.div`
@@ -17,29 +17,17 @@ export const LogoContainer = styled.div`
     height: 1px;
     width: 100vw;
     height: 100vh;
-    bottom:0;
-    right:0;
+    bottom: 0;
+    right: 0;
     transform: scale(1);
     background: ${color.azul};
   }
 
-  @keyframes animationIBF {
-    0% {
-      transform: scale(1.2, 1) translatex(-2200px);
-    }
-
-    100% {
-      transform: scale(1.2, 1) translatex(0);
-    }
+  .animationIBF {
+    transform: scale(1.2, 1) translatex(-1200px) !important;
   }
-  @keyframes animationIB {
-    0% {
-      transform: scale(1, 0.8) translatex(-2240px);
-    }
-
-    100% {
-      transform: scale(1, 0.8) translatex(0);
-    }
+  .animationIB {
+    transform: scale(1, 0.8) translatex(-1240px) !important;
   }
 `;
 
@@ -70,21 +58,19 @@ export const BoxLogo = styled.div`
   top: 0;
   left: 0;
   transform-origin: top left;
-  transform: scale(0.9, 0.8);
+  transform: scale(0.9, 0.8) translatex(0);
   transition: 700ms ease-in-out 0s;
   .IBFl {
     left: 7px;
-    animation-duration: 1500ms;
-    animation-timing-function: ease-in;
+    transition: 700ms ease-in-out 0s;
   }
   .IBFl > div {
     background: linear-gradient(170deg, black 0%, ${color.gris} 100%);
     transform: translatex(30px) rotate(45deg);
   }
   .IBFr {
-    left: 239px;
-    animation-duration: 500ms;
-    animation-timing-function: ease-in;
+    left: 238.4px;
+    transition: 700ms ease-in-out 0s;
   }
   .IBFr > div {
     background: linear-gradient(90deg, black 0%, ${color.gris} 100%);
@@ -101,8 +87,8 @@ export const IBF = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  transform: scale(1.2, 1);
-  animation-name: animationIBF;
+  transform: scale(1.2, 1) translatex(0);
+  transition: 700ms ease-in-out 0s;
   div {
     position: absolute;
     width: 85px;
@@ -112,11 +98,8 @@ export const IBF = styled.div`
 
 export const IB = styled.div`
   position: relative;
-  animation-name: animationIB;
-  animation-duration: 1s;
-  animation-timing-function: ease-in;
+  transition: 700ms ease-in-out 0s;
   transform: scale(1, 0.8) translatex(0);
-
   width: 150px;
   height: 315px;
   left: 77.5px;

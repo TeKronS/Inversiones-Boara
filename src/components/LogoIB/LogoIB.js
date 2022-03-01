@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import {
   LogoContainer,
   ResizeBox,
@@ -13,6 +13,12 @@ export const LogoIB = () => {
   const refBoxLogo = useRef(null);
   const LogoResizeBox = useRef(null);
 
+  useEffect(() => {
+    setTimeout(() => {
+      refBoxLogo.current.children[1].classList.remove("animationIBF");
+    }, 2000);
+  }, []);
+
   function endAnimation() {
     setTimeout(() => {
       LogoResizeBox.current.classList.remove("logoContainerFullScreen");
@@ -23,6 +29,12 @@ export const LogoIB = () => {
   function elementPositionchanged() {
     LogoResizeBox.current.style.position = "relative";
   }
+  function transitionEndRight() {
+    refBoxLogo.current.children[2].classList.remove("animationIB");
+  }
+  function transitionEndCenter() {
+    refBoxLogo.current.children[0].classList.remove("animationIBF");
+  }
 
   return (
     <LogoContainer>
@@ -32,15 +44,18 @@ export const LogoIB = () => {
         className={"logoContainer logoContainerFullScreen"}
       >
         <BoxLogo ref={refBoxLogo} className={"BoxLogoCenter"}>
-          <IBF onAnimationEnd={endAnimation} className={"IBFl"}>
+          <IBF onTransitionEnd={endAnimation} className={"IBFl animationIBF"}>
             <div></div>
           </IBF>
 
-          <IBF className={"IBFr"}>
+          <IBF
+            onTransitionEnd={transitionEndRight}
+            className={"IBFr animationIBF"}
+          >
             <div></div>
           </IBF>
 
-          <IB>
+          <IB onTransitionEnd={transitionEndCenter} className={"animationIB"}>
             <IBTextContainer>
               <IBText translate={"no"}>IB</IBText>
             </IBTextContainer>
