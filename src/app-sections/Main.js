@@ -37,7 +37,6 @@ export const MainSection = () => {
       ? JSON.parse(localStorage.getItem("Reseñas"))
       : null
   );
-  console.log("load");
   useEffect(() => {
     if (
       location.pathname === "/about" ||

@@ -4,7 +4,7 @@ const color = {
   azul: "#021323",
   amarillo1: "#FFCD00",
   amarillo2: "#ebb441",
-  gris: "#8B8B8B",
+  gris: "#8B8B8B"
 };
 
 export const LogoContainer = styled.div`
@@ -12,14 +12,12 @@ export const LogoContainer = styled.div`
   height: 1px;
 
   .logoContainerFullScreen {
-    position: fixed;
-    width: 1px;
-    height: 1px;
+    position: fixed !important;
     width: 100vw;
     height: 100vh;
     bottom: 0;
     right: 0;
-    transform: scale(1);
+    transform: scale(1) !important;
     background: ${color.azul};
   }
 

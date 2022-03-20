@@ -6,7 +6,7 @@ import {
   IBF,
   IB,
   IBText,
-  IBTextContainer,
+  IBTextContainer
 } from "./styles";
 
 export const LogoIB = () => {
