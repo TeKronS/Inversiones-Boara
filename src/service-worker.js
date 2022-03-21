@@ -72,6 +72,7 @@ self.addEventListener("message", (event) => {
 
 // Any other custom service worker logic can go here.
 
+//add fetch image from firebase
 self.addEventListener("fetch", (event) => {
   if (event.request.url.includes("inversiones-boara.appspot.com/o/imagenes")) {
     event.respondWith(

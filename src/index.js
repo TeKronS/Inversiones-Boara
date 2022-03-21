@@ -12,4 +12,5 @@ ReactDOM.render(
   rootElement
 );
 
+//activate service worker
 register();

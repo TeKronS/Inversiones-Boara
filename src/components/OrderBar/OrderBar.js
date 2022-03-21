@@ -4,8 +4,10 @@ export const OrderBar = ({
   nameOrder,
   setNameOrden,
   priceOrder,
-  setPriceOrden
+  setPriceOrden,
 }) => {
+  //------------------------------------
+
   function changedNameOrder(e) {
     if (e.target.children[0]) {
       if (nameOrder) {
@@ -17,6 +19,8 @@ export const OrderBar = ({
       }
     }
   }
+  //------------------------------------
+
   function changedPriceOrder(e) {
     if (e.target.children[0]) {
       if (priceOrder) {
@@ -28,6 +32,7 @@ export const OrderBar = ({
       }
     }
   }
+  //------------------------------------
 
   return (
     <OrderBox>

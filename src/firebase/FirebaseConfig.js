@@ -49,6 +49,7 @@ export async function getTotalData() {
   let arreglos = {};
   let complementos = {};
   let reseñas = [];
+  //------------------------------------
 
   async function getArreglos() {
     const querySnapshot1 = await getDocs(collection(db, "Arreglos"));
@@ -78,7 +79,7 @@ export async function getTotalData() {
       reseñas.push({ id, ...data });
     });
   }
-  //-----------
+  //-----try again if you fail up to a maximum of 3 times------
   while (Object.keys(arreglos).length <= 0 && triedArreglos < 3) {
     triedArreglos += 1;
     await getArreglos();

@@ -5,7 +5,7 @@ import {
   BodyCategory,
   BodyArticles,
   BoxButtons,
-  TotalPedidoBox
+  TotalPedidoBox,
 } from "./styles";
 import { Article } from "./Article";
 import { useBlocker } from "./../../hook/useBlocker";
@@ -53,7 +53,8 @@ export const ListArticle = ({ articles, setList, price }) => {
     if (Object.keys(order.current).length !== 0) {
       Object.values(order.current).forEach((item) => {
         totalPrice =
-          totalPrice + parseFloat(item.precio, 10) * parseInt(item.cantidad, 10);
+          totalPrice +
+          parseFloat(item.precio, 10) * parseInt(item.cantidad, 10);
       });
       return totalPrice;
     }

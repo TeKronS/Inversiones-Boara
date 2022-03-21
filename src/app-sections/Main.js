@@ -9,9 +9,13 @@ import { Error } from "./../pages/error/Error";
 import { getInitialData, getTotalData } from "./../firebase/FirebaseConfig";
 import { useNavigate, useLocation } from "react-router-dom";
 
+//This application uses local storage so that it loads faster and without internet
+
 export const MainSection = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  //these are the main data
   const [recommended, setRecommended] = useState(
     localStorage.getItem("Recomendados") !== undefined &&
       localStorage.getItem("Recomendados")
@@ -37,6 +41,7 @@ export const MainSection = () => {
       ? JSON.parse(localStorage.getItem("Reseñas"))
       : null
   );
+
   useEffect(() => {
     if (
       location.pathname === "/about" ||
@@ -48,6 +53,7 @@ export const MainSection = () => {
       navigate("/", { replace: false });
     }
 
+    //this function gets the first data
     function getRecommended() {
       getInitialData()
         .then(setRecommended)
@@ -58,6 +64,7 @@ export const MainSection = () => {
         });
     }
 
+    //this function gets the following data
     function getArrangementsAndAccesories() {
       getTotalData().then((data) => {
         if (Object.keys(data.complementos).length > 0) {

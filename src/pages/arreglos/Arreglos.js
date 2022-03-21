@@ -13,6 +13,8 @@ export const Arreglos = ({ arrangaments, accessories }) => {
     navigate("/error");
   }
 
+  //checking if arrangaments has items
+  //
   useEffect(() => {
     if (arrangaments) {
       if (Object.keys(arrangaments).length === 0) {
@@ -21,27 +23,34 @@ export const Arreglos = ({ arrangaments, accessories }) => {
     }
   }, [arrangaments]);
 
+  //Reference
   const refCategoryElement = useRef(null);
   const refWhatsappLink = useRef(null);
 
+  //state var
   const [currentCategory, setCurrentCategory] = useState("Cumpleaño");
   const [dataCard, setDataCard] = useState(false);
   const [isComplement, setComplement] = useState(false);
   const [nameOrder, setNameOrden] = useState(null);
   const [priceOrder, setPriceOrden] = useState(null);
 
+  //get the current Arrangements
   const currentArrangements =
     arrangaments && Object.entries(arrangaments[currentCategory]);
-
+  //creating message to send to whatsapp
   const message = `Hola me interesa el arreglo ${dataCard.title} que tiene el precio de ${dataCard.price} Dólares,`;
 
   function onChangedCategory(e) {
     setCurrentCategory(e.target.id);
   }
+  //this function open category bar
   function ClickCategory() {
     refCategoryElement.current.classList.toggle("spand");
   }
+
+  //function to request product
   function solicitarPerdido(title, price) {
+    //checking if accessories has elements, to activate alert box.
     if (!accessories) {
       closeAlert(false);
       return;
@@ -64,6 +73,8 @@ export const Arreglos = ({ arrangaments, accessories }) => {
       setDataCard(false);
     }
   }
+
+  //this function adds accessories to the request and calculates the total price
   function addComplement(response) {
     let additionalText = "";
     let totalPrice = parseFloat(dataCard.price);
@@ -91,6 +102,8 @@ export const Arreglos = ({ arrangaments, accessories }) => {
       closeAlert(false);
     }
   }
+
+  //sort the variable
   const articles =
     currentArrangements &&
     currentArrangements

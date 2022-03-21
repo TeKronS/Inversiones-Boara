@@ -14,6 +14,7 @@ export const Home = ({ recommended, accessories }) => {
     navigate("/error");
   }
 
+  //checking if recommended has items
   useEffect(() => {
     if (recommended) {
       if (Object.keys(recommended).length === 0) {
@@ -22,18 +23,24 @@ export const Home = ({ recommended, accessories }) => {
     }
   }, [recommended]);
 
+  //Reference
   const refWhatsappLink = useRef(null);
   const refBody = useRef(null);
 
+  //state var
   const [dataCard, setDataCard] = useState(false);
   const [isComplement, setComplement] = useState(false);
   const [nameOrder, setNameOrden] = useState(null);
   const [priceOrder, setPriceOrden] = useState(null);
 
+  //creating message to send to whatsapp
   const message = `Hola me interesa el arreglo ${dataCard.title} que tiene el precio de ${dataCard.price} Dólares,`;
+  //copying element to use short function
   const copyData = recommended && recommended.slice();
 
+  //function to request product
   function solicitarPerdido(title, price) {
+    //checking if accessories has elements, to activate alert box.
     if (accessories && Object.keys(accessories).length > 0) {
       setDataCard({ title, price });
       return;
@@ -41,6 +48,7 @@ export const Home = ({ recommended, accessories }) => {
     closeAlert(false);
   }
 
+  //this function redirects to the whatsapp application
   function redirect(text) {
     copiarAlPortapapeles(text);
     refWhatsappLink.current.href = `https://api.whatsapp.com/send?phone=584244476167&text=${text}`;
@@ -59,6 +67,7 @@ export const Home = ({ recommended, accessories }) => {
     }
   }
 
+  //this function adds accessories to the request and calculates the total price
   function addComplement(response) {
     let additionalText = "";
     let totalPrice = parseFloat(dataCard.price);
@@ -96,6 +105,7 @@ export const Home = ({ recommended, accessories }) => {
     refBody.current.removeChild(aux);
   }
 
+  //sort the variable
   const articles =
     copyData &&
     copyData

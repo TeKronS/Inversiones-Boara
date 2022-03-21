@@ -12,6 +12,7 @@ export const Reseñas = ({ reviews }) => {
     navigate("/error");
   }
 
+  //checking if reviews has items
   useEffect(() => {
     if (reviews) {
       if (!reviews.length) {
@@ -22,6 +23,7 @@ export const Reseñas = ({ reviews }) => {
 
   const [order, setOrder] = useState(true);
 
+  //creating sorted iterable variable
   const articles =
     reviews &&
     reviews.sort(function (a, b) {
