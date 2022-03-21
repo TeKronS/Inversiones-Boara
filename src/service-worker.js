@@ -73,11 +73,7 @@ self.addEventListener("message", (event) => {
 // Any other custom service worker logic can go here.
 
 self.addEventListener("fetch", (event) => {
-  if (
-    event.request.url.includes(".jpg") ||
-    event.request.url.includes(".jpeg") ||
-    event.request.url.includes(".png")
-  ) {
+  if (event.request.url.includes("inversiones-boara.appspot.com/o/imagenes")) {
     event.respondWith(
       caches.match(event.request).then(function (response) {
         // Cache hit - return response
@@ -117,3 +113,4 @@ self.addEventListener("fetch", (event) => {
 
 {
 }
+// https://firebasestorage.googleapis.com/v0/b/inversiones-boara.appspot.com/o/imagenes%2F1647779476163190174103_126434242888229_3503377411601319540_n.jpg?alt=media&token=e0b5ee75-dfc7-44cf-b62c-7943e1ba68df
