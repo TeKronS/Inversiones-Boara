@@ -11,7 +11,7 @@ const getSecondsDiff = (timestamp) => (Date.now() - timestamp) / 1000;
 
 const getUnitAndValueDate = (secondsElapsed) => {
   for (const [unit, secondsInUnit] of Object.entries(DATE_UNITS)) {
-    if (secondsElapsed >= secondsInUnit || unit === "seconds") {
+    if (secondsElapsed >= secondsInUnit || unit === "second") {
       const value = Math.floor(secondsElapsed / secondsInUnit) * -1;
       return { value, unit };
     }
