@@ -1,9 +1,7 @@
 import { Body, Paragraph, Title, ContactUS, SpanBold } from "./styles";
 import { Like, Comments, Page, FacebookProvider } from "react-facebook";
 
-
 export const AboutUs = () => {
-
   return (
     <Body>
       <Title>Sobre Inversiones Boara</Title>
@@ -32,31 +30,31 @@ export const AboutUs = () => {
             <span>Jose Bogado: </span>
             <a
               href={
-                "https://api.whatsapp.com/send?phone=584144402507&text=Hola"
+                "https://api.whatsapp.com/send?phone=584144238416&text=Hola"
               }
             >
-              +58 414-4402507
+              +58 414-4238416
             </a>
           </p>
           <SpanBold>Ubicados en San Carlos, Estado Cojedes.</SpanBold>
         </ContactUS>
       </section>
-     
+
       <FacebookProvider appId="808299077227731">
-      <section>
-        <Title>
-          <Page href="https://www.facebook.com/Inversiones-Boara-101083822497326" />
-        </Title>
-        <br />
-        <Comments
-          href="https://www.facebook.com/Inversiones-Boara-101083822497326"
-          width="100%"
-          lazy="true"
-        />
-        <br />
-        <Like colorScheme="dark" showFaces share />
-      </section>
-      </FacebookProvider >
+        <section>
+          <Title>
+            <Page href="https://www.facebook.com/Inversiones-Boara-101083822497326" />
+          </Title>
+          <br />
+          <Comments
+            href="https://www.facebook.com/Inversiones-Boara-101083822497326"
+            width="100%"
+            lazy="true"
+          />
+          <br />
+          <Like colorScheme="dark" showFaces share />
+        </section>
+      </FacebookProvider>
     </Body>
   );
 };

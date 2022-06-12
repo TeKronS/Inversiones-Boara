@@ -23,9 +23,9 @@ export const FooterSection = () => {
         <div>
           <img alt="" src={whatsapp} />
           <a
-            href={"https://api.whatsapp.com/send?phone=584144402507&text=Hola"}
+            href={"https://api.whatsapp.com/send?phone=584144238416&text=Hola"}
           >
-            +58 414-4402507
+            +58 414-4238416
           </a>
         </div>
         <div>
