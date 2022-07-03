@@ -28,7 +28,7 @@ export const Arreglos = ({ arrangaments, accessories }) => {
   const refWhatsappLink = useRef(null);
 
   //state var
-  const [currentCategory, setCurrentCategory] = useState("Cumpleaño");
+  const [currentCategory, setCurrentCategory] = useState(null);
   const [dataCard, setDataCard] = useState(false);
   const [isComplement, setComplement] = useState(false);
   const [nameOrder, setNameOrden] = useState(null);
@@ -36,7 +36,9 @@ export const Arreglos = ({ arrangaments, accessories }) => {
 
   //get the current Arrangements
   const currentArrangements =
-    arrangaments && Object.entries(arrangaments[currentCategory]);
+    arrangaments && currentCategory
+      ? Object.entries(arrangaments[currentCategory])
+      : null;
   //creating message to send to whatsapp
   const message = `Hola me interesa el arreglo ${dataCard.title} que tiene el precio de ${dataCard.price} Dólares,`;
 
@@ -132,7 +134,13 @@ export const Arreglos = ({ arrangaments, accessories }) => {
     <Body>
       <WhatsappLink ref={refWhatsappLink} />
       {dataCard && <AlertBox transitionFinish={closeAlert} />}
-      <Title>Regalos de {currentCategory}</Title>
+
+      {currentCategory ? (
+        <Title>Regalos de {currentCategory}</Title>
+      ) : (
+        <Title className={"loading"}>CARGANDO</Title>
+      )}
+
       <BodyCategory>
         <nav ref={refCategoryElement}>
           <ul>
