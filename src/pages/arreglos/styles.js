@@ -4,7 +4,7 @@ const color = {
   azul: "#021323",
   amarillo1: "#FFCD00",
   amarillo2: "#ebb441",
-  gris: "#8B8B8B"
+  gris: "#8B8B8B",
 };
 
 export const Body = styled.section`
@@ -14,13 +14,39 @@ export const Body = styled.section`
   grid-template-rows: 70px 90px 26px 1fr;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  @keyframes loading {
+    0% {
+      content: ".";
+    }
+    33.33% {
+      content: "..";
+    }
+    66.66% {
+      content: "...";
+    }
+    100% {
+      content: ".";
+    }
+  }
+  .loading {
+    :after {
+      position: absolute;
+      bottom: 0;
+      right: -20px;
+      width: 20px;
+      text-align: left;
+      content: ".";
+      animation: loading infinite 3s 0s;
+    }
+  }
 `;
 
 export const Title = styled.h1`
   text-align: center;
-  width: 100%;
   align-self: center;
-  margin: 10px 0;
+  justify-self: center;
+  margin: 10px auto;
+  position: relative;
 `;
 
 export const BodyCategory = styled.section`
