@@ -28,7 +28,9 @@ export const Arreglos = ({ arrangaments, accessories }) => {
   const refWhatsappLink = useRef(null);
 
   //state var
-  const [currentCategory, setCurrentCategory] = useState(null);
+  const [currentCategory, setCurrentCategory] = useState(
+    arrangaments ? Object.keys(arrangaments)[0] : null
+  );
   const [dataCard, setDataCard] = useState(false);
   const [isComplement, setComplement] = useState(false);
   const [nameOrder, setNameOrden] = useState(null);
